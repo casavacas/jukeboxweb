@@ -29,6 +29,12 @@
 	<div id="centCont">	
 		<?php
 		echo "<center>Songs</center>";
+		?>
+		<center><form action="index_add_song.php" method="GET">
+			<input type="hidden" name="uri" value="<?php echo "clear"; ?>"> 
+			<input type="submit" value="Clear text file">
+		</form></center>
+		<?php
 		$p = $_GET["song"];
 		$p = preg_replace( '/\s+/' , '' , $p );
 		$url = 'https://api.spotify.com/v1/search?q='.$p.'&type=track';
@@ -61,7 +67,6 @@
 		echo "</ol>";
 		?>
 	</div>
-
 </body>
 
-</html>;
+</html>
