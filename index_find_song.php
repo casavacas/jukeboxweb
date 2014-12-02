@@ -46,9 +46,14 @@
 			$img  = $item['album']['images'][0]['url'];
 			$hgt  = $item['album']['images'][0]['height'] / 2;
 			$width= $item['album']['images'][0]['width'] / 2;
-			$plus = "http://t2.gstatic.com/images?q=tbn:ANd9GcQBCiGea3Nqn8X24_FHBboG07Xox-TTXByzRlPEptPusLvH_vB7";
 
-			echo "<li><a href=".$link.">".$name."</a>"." <img src =".$plus." height=15 width=15 ></li>";
+			echo "<li><a href=".$link.">".$name."</a></li>";
+			?>
+			<form action="index_add_song.php" method="GET">
+				<input type="hidden" name="uri" value="<?php echo $uri; ?>"> 
+				<input type="submit" value="Add Song">
+			</form>
+			<?php
 			echo $uri;
 			echo "<br>";
 			echo "<a href=".$link."><img src =".$img." height=".$hgt." width=".$width.">";
