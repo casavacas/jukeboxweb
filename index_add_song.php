@@ -50,7 +50,7 @@
 	if( $bool == false )
 	{
 		echo $bool;
-		fwrite( $file , $uri );
+		fwrite( $file , $uri."\n" );
 	}
 	fclose( $file );
 	header( "Location: index.php" );

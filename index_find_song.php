@@ -28,6 +28,11 @@
 	<div id="leftCont"><p></p></div>
 	<div id="centCont">	
 		<?php
+		?>
+		<form action="index.php" method="POST">
+			<input type="submit" value="back">
+		</form>
+		<?php
 		echo "<center>Songs</center>";
 
 		$p = $_GET["song"];
@@ -49,16 +54,15 @@
 			$hgt  = $item['album']['images'][0]['height'] / 2;
 			$width= $item['album']['images'][0]['width'] / 2;
 
-			echo "<li><a href=".$link.">".$name."</a></li>";
+			echo "<li><a target=_blank href=".$link.">".$name."</a></li>";
 			?>
 			<form action="index_add_song.php" method="POST">
-				<input type="hidden" name="uri" value="<?php echo $str; ?>"> 
+				<input type="hidden" name="uri" value="<?php echo $uri; ?>"> 
 				<input type="submit" value="Add Song">
 			</form>
 			<?php
-			echo $uri;
 			echo "<br>";
-			echo "<a href=".$link."><img src =".$img." height=".$hgt." width=".$width.">";
+			echo "<a target=_blank href=".$link."><img src =".$img." height=".$hgt." width=".$width.">";
 		}
 		echo "</ol>";
 		?>
