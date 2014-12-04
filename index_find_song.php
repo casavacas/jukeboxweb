@@ -29,19 +29,15 @@
 	<div id="centCont">	
 		<?php
 		echo "<center>Songs</center>";
-		?>
-		<center><form action="index_add_song.php" method="GET">
-			<input type="hidden" name="uri" value="<?php echo "clear"; ?>"> 
-			<input type="submit" value="Clear text file">
-		</form></center>
-		<?php
+
 		$p = $_GET["song"];
 		$p = preg_replace( '/\s+/' , '' , $p );
+		if( $p == '' ) header( "Location: index.php" );
 		$url = 'https://api.spotify.com/v1/search?q='.$p.'&type=track';
-
 		$ch = curl_init( $url ); 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$json = curl_exec( $ch );
+		$str    = json_encode( $json );
 		$string = json_decode( $json , true );
 
 		echo "<ol>";
@@ -55,8 +51,8 @@
 
 			echo "<li><a href=".$link.">".$name."</a></li>";
 			?>
-			<form action="index_add_song.php" method="GET">
-				<input type="hidden" name="uri" value="<?php echo $uri; ?>"> 
+			<form action="index_add_song.php" method="POST">
+				<input type="hidden" name="uri" value="<?php echo $str; ?>"> 
 				<input type="submit" value="Add Song">
 			</form>
 			<?php

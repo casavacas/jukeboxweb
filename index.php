@@ -25,16 +25,22 @@
 			<input type="submit" value="Submit">
 		</center>
 	</form>
+	<center>
+		<form action="index_clear.php" method="GET">
+			<input type="hidden" name="uri" value="<?php echo "clear"; ?>"> 
+			<input type="submit" value="Clear text file">
+		</form>
+	</center>
 	<?php
-		$file = fopen( "songs.txt" , "r" );
-		echo "<ol>";
-		while( !feof( $file ))
-		{
-			$line = fgets( $file );
-			$line = preg_replace( '/\s+/' , '' , $line );
-			if( $line != "" ) echo "<li>".$line."</li>";
-		}
-		echo "</ol>";
+	$file = fopen( "songs.txt" , "r" );
+	echo "<ol>";
+	while( !feof( $file ))
+	{
+		$line = fgets( $file );
+		$line = preg_replace( '/\s+/' , '' , $line );
+		if( $line != "" ) echo "<li>".$line."</li>";
+	}
+	echo "</ol>";
 	?>
 
 </body>

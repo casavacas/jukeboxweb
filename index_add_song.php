@@ -27,14 +27,7 @@
 <body>
 	<?php
 	$bool = false;
-	$uri = $_GET["uri"];
-	if( $uri == "clear" )
-	{
-		$bool = true;
-		$file = fopen( "songs.txt" , "w" );
-		echo "Cleared!";
-		
-	}
+	$uri = $_POST["uri"];
 	if( !file_exists( "songs.txt" ))
 	{
 		$file = fopen( "songs.txt" , "w" );
@@ -57,9 +50,10 @@
 	if( $bool == false )
 	{
 		echo $bool;
-		fwrite( $file , $uri."\n" );
+		fwrite( $file , $uri );
 	}
 	fclose( $file );
+	header( "Location: index.php" );
 	?>
 </body>
 
